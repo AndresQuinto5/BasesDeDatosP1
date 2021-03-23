@@ -14,7 +14,7 @@ import ast
 import youtube_dl
 import os
 import random
-Window.clearcolor = (72/255.0, 19/255.0, 95/255.0, 1)
+Window.clearcolor = (201/255.0, 149/255.0, 223/255.0, 1)
 Window.size = (1100, 700)
 
 
