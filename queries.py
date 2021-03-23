@@ -18,3 +18,6 @@ addUser_album = 'INSERT INTO Album (AlbumId, Title, ArtistId) VALUES ()'
 addUser_artist = 'INSERT INTO addedArtist (UserId,ArtistId,InDate) VALUES ()'
 addUser_track = 'INSERT INTO addedTrack (UserId,TrackId,InDate) VALUES ()'
 updateUser = 'UPDATE User SET username=parameter, email=parameter, password=parameter,role=parameter WHERE id=parameter'
+
+#Queries para artista
+getArtists = 'SELECT * FROM Artist'
