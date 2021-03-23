@@ -21,3 +21,9 @@ updateUser = 'UPDATE User SET username=parameter, email=parameter, password=para
 
 #Queries para artista
 getArtists = 'SELECT * FROM Artist'
+getArtist_permissionUpdate = 'SELECT * FROM artistPermission WHERE canUpdate = TRUE GROUP BY id'
+getArtist_permissionDelete = 'SELECT * FROM artistPermission WHERE canDelete=True GROUP BY id'
+getCommonArtists = 'SELECT art1.name, count(art1.name)  FROM Album a1 INNER JOIN Artist art1 ON a1.ArtistId = art1.ArtistId GROUP BY a1.name ORDER BY count(art1.name) desc LIMIT 10'
+getMostColaborativeArtists = 'SELECT  '
+getArtist = 'SELECT * FROM Artist WHERE Name LIKE parameter LIMIT 1'
+addArtist = 'INSERT INTO Artist (ArtistId, Name) VALUES (parameter,parameter2)'
