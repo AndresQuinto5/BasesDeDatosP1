@@ -1,0 +1,122 @@
+#ventanas a menejar 
+WindowManager:
+    Main:
+
+<BoxLayout>
+    canvas.before:
+        BorderImage:
+            # BorderImage behaves like the CSS BorderImage
+            border: 10, 10, 10, 10
+            source: 'img/Background.png'
+            pos: self.pos
+            size: self.size
+
+<Main>:
+    name: "log"
+    errM: errM
+
+    GridLayout:
+        cols: 1
+
+        Image:
+            size_hint_y: None
+            height: 400
+            source: "Images/icon.png"
+
+        GridLayout:
+            cols: 3
+            size_hint_x: None
+            width: 670
+            size_hint_y: None
+            height: 115
+            
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                text: "Username"
+            
+            TextInput:
+                id: user_field
+                multiline: False
+                focus: True
+                text: "Ingrese su usuario"
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+
+                text: "Password"
+
+            TextInput:
+                id: pass_field
+                multiline: False
+                text: "Ingrese su contraseña"
+
+            Label:
+                size_hint_y: None
+                height: 5
+
+            Label:
+                text: ""
+
+            Label:
+                id: errM
+                text: ""
+
+            Label:
+                size_hint_y: None
+                height: 5
+
+        
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'Images/button1.jpg'
+                background_down: 'Images/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Log In"
+                on_release:
+                    root.userVer()
+        
+        GridLayout:
+            cols: 2
+
+
+            Label:
+
+                size_hint_x: None
+                width: 350
+            Label:
+                size_hint_x: None
+                width: 170
+                text: "To log in as administrator"
+
+            Label:
+                size_hint_x: None
+                width: 470
+            Button:
+                background_normal: 'Images/button1.jpg'
+                background_down: 'Images/button2.jpg'
+                text: "Click here"
+                size_hint_x: None
+                width: 170
+                on_release:
+                    app.root.current = 'admin'
+                    root.manager.transition.direction = "left"
+        Label:
+            size_hint_y: None
+            height: 20
