@@ -1,6 +1,25 @@
 #ventanas a menejar 
 WindowManager:
     Main:
+    AdminLog:
+    HomeUser:
+    AddPlaylist:
+    SearchSong:
+    PlaylistView:
+    StatsView:
+    HomeAdmin:
+    AdminConfig:
+    StatsAdmin:
+    AddSong:
+    AddArtist:
+    AddAlbum:
+    EliSong:
+    CreatePlay:
+    Bitacora:
+    MongoConexion:
+    Sugerencias:
+    ComprarCancion:
+    Simulacion:
 
 <BoxLayout>
     canvas.before:
@@ -21,7 +40,7 @@ WindowManager:
         Image:
             size_hint_y: None
             height: 400
-            source: "Images/icon.png"
+            source: "img/icon.png"
 
         GridLayout:
             cols: 3
@@ -83,8 +102,8 @@ WindowManager:
 
                 text: ""
             Button:
-                background_normal: 'Images/button1.jpg'
-                background_down: 'Images/button2.jpg'
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
                 size_hint_x: None
                 width: 200
 
@@ -109,8 +128,8 @@ WindowManager:
                 size_hint_x: None
                 width: 470
             Button:
-                background_normal: 'Images/button1.jpg'
-                background_down: 'Images/button2.jpg'
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
                 text: "Click here"
                 size_hint_x: None
                 width: 170
@@ -120,3 +139,5341 @@ WindowManager:
         Label:
             size_hint_y: None
             height: 20
+
+<AdminLog>:
+    name: "admin"
+    errM: errM
+
+    GridLayout:
+        cols: 1
+
+
+        Image:
+            size_hint_y: None
+            height: 400
+            source: "img/icon.png"
+
+        GridLayout:
+            cols: 3
+            size_hint_x: None
+            width: 670
+            size_hint_y: None
+            height: 115
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                text: "Username"
+
+            TextInput:
+                id: user_field
+                multiline: False
+                text: "Ingrese su usuario"
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                text: "Password"
+
+            TextInput:
+                id: pass_field
+                multiline: False
+                text: "Ingrese su contraseña"
+
+            Label:
+                size_hint_y: None
+                height: 5
+
+            Label:
+                text: ""
+
+            Label:
+                id: errM
+                text: ""
+
+            Label:
+                size_hint_y: None
+                height: 5
+
+
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Log In"
+                on_release:
+                    root.userVer()
+
+
+        GridLayout:
+            cols: 2
+
+
+            Label:
+                size_hint_x: None
+                width: 350
+            Label:
+                size_hint_x: None
+                width: 170
+                text: "To log in as a regular user"
+
+            Label:
+                size_hint_x: None
+                width: 470
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                text: "Click here"
+                size_hint_x: None
+                width: 170
+                on_release:
+                    app.root.current = 'log'
+                    root.manager.transition.direction = "right"
+        Label:
+            size_hint_y: None
+            height: 20
+
+
+
+<HomeUser>
+    name: "home"
+    timee: current
+
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+                Button:
+                    text: "Search"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'search'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Playlists"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'playlists'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'stats'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'log'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        font_size: 20
+                        text: "     Welcome!"
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        text: "     Thank you for using the Spotify Chafita streaming music service"
+                        font_size: 17
+
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        text: "     To listen to a song, you can either search it by song name, artist or genre"
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        text: "     You can also listen to a song from your playlist by selecting the 'Playlists' page"
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        text: "     If you want to susbcribe, you can do it down below"
+
+
+
+
+        GridLayout:
+            cols: 1
+            Label:
+                font_size: 20
+                text: "Now Playing:"
+
+
+            GridLayout:
+                cols: 9
+                size_hint_y: None
+                height: 30
+
+                Label:
+                    text: ""
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 65
+                    background_normal: 'img/back.png'
+                    pos_hint: {"x": 0.5}
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+                    background_normal: 'img/play.png'
+                    pos_hint: {"x": 0.5, "y":0.5}
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+                    background_normal: 'img/next.png'
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+
+
+            GridLayout:
+                cols: 2
+                Label:
+                    text: ""
+                    size_hint_x: None
+                    width: 250
+                ProgressBar:
+                    id: current
+                    value: 0
+                    min: 0
+                    max: 1
+                    size_hint_x: None
+                    width: 600
+                    pos_hint: {"x": 0.5}
+
+            BoxLayout:
+
+<AddPlaylist>
+    name: "addPlaylist"
+    sinp: sinp
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'home'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Search"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Playlists"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'playlists'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'stats'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'log'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+
+                GridLayout:
+                    cols: 2
+
+                    Label
+
+                        size_hint_x: None
+                        width: 200
+                        text: "Playlist Name"
+
+                    TextInput:
+                        id: sinp
+                        text: ""
+                        font_size: 18
+                        size_hint_x: None
+                        width: 500
+                        size_hint_y: None
+                        height: 50
+                        padding_x: [40, 50]
+                        padding_y: [13, 0]
+                        multiline:False
+
+                Button:
+                    text: "Add to Playlist"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+
+                    size_hint_y: None
+                    height: 70
+                    on_release:
+                        root.addPla()
+
+        BoxLayout:
+
+<SearchSong>
+    name: "search"
+    currtime: current
+    songe: songe
+    pl1: pl1
+    pl2: pl2
+    pl3: pl3
+    pl4: pl4
+    pl5: pl5
+    pl6: pl6
+    pl7: pl7
+    pl8: pl8
+    pl9: pl9
+    pl10: pl10
+    name1: name1
+
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+            GridLayout:
+                cols:3
+                padding_y: [0, 30]
+
+
+                GridLayout:
+                    cols: 1
+                    size_hint_x: None
+                    width: 200
+
+                Button:
+                    size_hint_x: None
+                    width: 100
+                    size_hint_y: None
+                    height: 50
+                    font_size: 20
+                    text: "Search"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release: root.search()
+
+                TextInput:
+                    id: songe
+                    text: ""
+                    font_size: 18
+                    size_hint_x: None
+                    width: 500
+                    size_hint_y: None
+                    height: 50
+                    padding_x: [40, 50]
+                    padding_y: [13, 0]
+                    multiline:False
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'home'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Search"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Playlists"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'playlists'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'stats'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'log'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: 300
+
+                    ScrollView:
+                        size_hint: None, None
+                        height: 250
+                        width: 900
+                        bar_width: 20
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+                        GridLayout:
+
+                            cols: 3
+                            size_hint_y: None
+                            height: 420
+                            size_hint_x: None
+                            width: 880
+
+                            Button:
+                                id: pl1
+                                text: ""
+                                on_press: root.selected(1)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(1)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(1)
+
+
+
+                            Button:
+                                id: pl2
+                                text: ""
+                                on_press: root.selected(2)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(2)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(2)
+
+                            Button:
+                                id: pl3
+                                text: ""
+                                on_press: root.selected(3)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(3)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(3)
+
+                            Button
+                                id: pl4
+                                text: ""
+                                on_press: root.selected(4)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(4)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(4)
+
+                            Button:
+                                id: pl5
+                                text: ""
+                                on_press: root.selected(5)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(5)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(5)
+
+                            Button:
+                                id: pl6
+                                text: ""
+                                on_press: root.selected(6)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(6)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(6)
+
+                            Button:
+                                id: pl7
+                                text: ""
+                                on_press: root.selected(7)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(7)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(7)
+
+                            Button
+                                id: pl8
+                                text: ""
+                                on_press: root.selected(8)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(8)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(8)
+
+                            Button:
+                                id: pl9
+                                text: ""
+                                on_press: root.selected(9)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(9)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(9)
+
+                            Button:
+                                id: pl10
+                                text: ""
+                                on_press: root.selected(10)
+                                size_hint_x: None
+                                width: 760
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Add"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.addPla(10)
+
+                            Button:
+                                text: "Buy"
+                                size_hint_x: None
+                                width: 60
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.buy(10)
+
+        GridLayout:
+            cols: 1
+            Label:
+                font_size: 20
+                text: ""
+
+            Label:
+                id: name1
+                font_size: 20
+                text: "Now Playing: Cancion - Artista"
+
+            GridLayout:
+                cols: 9
+                size_hint_y: None
+                height: 30
+
+                Label:
+                    text: ""
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 65
+                    background_normal: 'img/back.jpg'
+                    pos_hint: {"x": 0.5}
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+                    background_normal: 'img/play.jpg'
+                    pos_hint: {"x": 0.5, "y":0.5}
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+                    background_normal: 'img/next.jpg'
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+
+
+            GridLayout:
+                cols: 2
+                Label:
+                    text: ""
+                    size_hint_x: None
+                    width: 250
+                ProgressBar:
+                    id: current
+                    value: 0
+                    min: 0
+                    max: 1
+                    size_hint_x: None
+                    width: 600
+                    pos_hint: {"x": 0.5}
+
+            BoxLayout:
+
+
+<ComprarCancion>
+    name: "cart"
+    pl1: pl1
+    pl2: pl2
+    pl3: pl3
+    pl4: pl4
+    pl5: pl5
+    pl6: pl6
+    pl7: pl7
+    pl8: pl8
+    pl9: pl9
+    pl10: pl10
+
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'home'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Search"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+                    on_release:
+                        app.root.current = 'search'
+                        root.manager.transition.direction = "right"
+
+                Button:
+                    text: "Playlists"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'playlists'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'stats'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'log'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: 300
+
+                    ScrollView:
+                        size_hint: None, None
+                        height: 250
+                        width: 900
+                        bar_width: 20
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+                        GridLayout:
+
+                            cols: 2
+                            size_hint_y: None
+                            height: 420
+                            size_hint_x: None
+                            width: 880
+
+                            Button:
+                                id: pl1
+                                text: ""
+                                on_press: root.selected(1)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(1)
+                                    root.manager.transition.direction = "right"
+
+
+                            Button:
+                                id: pl2
+                                text: ""
+                                on_press: root.selected(2)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(2)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                id: pl3
+                                text: ""
+                                on_press: root.selected(3)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(3)
+                                    root.manager.transition.direction = "right"
+
+                            Button
+                                id: pl4
+                                text: ""
+                                on_press: root.selected(4)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(4)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                id: pl5
+                                text: ""
+                                on_press: root.selected(5)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(5)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                id: pl6
+                                text: ""
+                                on_press: root.selected(6)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(6)
+                                    root.manager.transition.direction = "right"
+
+
+                            Button:
+                                id: pl7
+                                text: ""
+                                on_press: root.selected(7)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(1)
+                                    root.manager.transition.direction = "right"
+
+                            Button
+                                id: pl8
+                                text: ""
+                                on_press: root.selected(8)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(8)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                id: pl9
+                                text: ""
+                                on_press: root.selected(9)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(9)
+                                    root.manager.transition.direction = "right"
+
+                            Button:
+                                id: pl10
+                                text: ""
+                                on_press: root.selected(10)
+                                size_hint_x: None
+                                width: 800
+                                size_hint_y: None
+                                height: 40
+
+                            Button:
+                                text: "Remove"
+                                size_hint_x: None
+                                width: 100
+                                size_hint_y: None
+                                height: 42
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                on_release:
+                                    root.removes(10)
+                                    root.manager.transition.direction = "right"
+
+        GridLayout:
+            cols: 1
+            Label:
+                font_size: 20
+                text: ""
+
+            Button:
+                text: "Confirm Checkout"
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                on_release:
+                    root.checkout()
+
+        BoxLayout:
+
+
+<PlaylistView>
+    name: "playlists"
+    currtime: current
+    pl1: pl1
+    pl2: pl2
+    pl3: pl3
+    pl4: pl4
+    pl5: pl5
+    pl6: pl6
+    pl7: pl7
+    pl8: pl8
+    pl9: pl9
+    pl10: pl10
+    titl: titl
+    name1: name1
+
+
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'home'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Search"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'search'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Playlists"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+                    on_release: root.back()
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'stats'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'log'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+
+                GridLayout:
+                    cols: 2
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        id: titl
+                        font_size: 20
+                        text: "Playlists (Page 1)"
+
+                    Button:
+                        text: "Create"
+                        size_hint_x: None
+                        width: 70
+                        background_normal: 'img/button1.jpg'
+                        background_down: 'img/button2.jpg'
+                        on_release:
+                            app.root.current = 'createPlaylist'
+                            root.manager.transition.direction = "right"
+
+                ScrollView:
+                    size_hint: 1, .1
+                    bar_width: 20
+                    bar_color: 5, 10, 15, .8
+                    bar_inactive_color: 5, 20, 10, .5
+                    scroll_type: ['bars']
+                    GridLayout:
+
+                        cols: 2
+                        size_hint_y: None
+                        height: 420
+                        size_hint_x: None
+                        width: 880
+
+                        Button:
+                            id: pl1
+                            text: root.p1
+                            on_press: root.selected(1)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+
+                        Button:
+                            id: pl2
+                            text: root.p2
+                            on_press: root.selected(2)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button:
+                            id: pl3
+                            text: root.p3
+                            on_press: root.selected(3)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button
+                            id: pl4
+                            text: root.p4
+                            on_press: root.selected(4)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button:
+                            id: pl5
+                            text: root.p5
+                            on_press: root.selected(5)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button:
+                            id: pl6
+                            text: root.p6
+                            on_press: root.selected(6)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button:
+                            id: pl7
+                            text: root.p7
+                            on_press: root.selected(7)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button
+                            id: pl8
+                            text: root.p8
+                            on_press: root.selected(8)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button:
+                            id: pl9
+                            text: root.p9
+                            on_press: root.selected(9)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                        Button:
+                            id: pl10
+                            text: root.p10
+                            on_press: root.selected(10)
+                            size_hint_x: None
+                            width: 820
+                            size_hint_y: None
+                            height: 40
+
+                        Button:
+                            text: "Add"
+                            size_hint_x: None
+                            width: 60
+                            size_hint_y: None
+                            height: 42
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                app.root.current = 'addPlaylist'
+                                root.manager.transition.direction = "right"
+
+                Button:
+                    text: 'Change Page'
+                    size_hint_y: None
+                    height: 40
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_press: root.changePage()
+
+
+
+        GridLayout:
+            cols: 1
+
+            Label:
+                id: name1
+                font_size: 20
+                text: "Now Playing: Cancion - Artista"
+
+
+            GridLayout:
+                cols: 9
+                size_hint_y: None
+                height: 30
+
+                Label:
+                    text: ""
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 65
+                    background_normal: 'img/back.jpg'
+                    pos_hint: {"x": 0.5}
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+                    background_normal: 'img/play.jpg'
+                    pos_hint: {"x": 0.5, "y":0.5}
+
+                Button:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+                    background_normal: 'img/next.jpg'
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+
+
+            GridLayout:
+                cols: 2
+                Label:
+                    text: ""
+                    size_hint_x: None
+                    width: 250
+                ProgressBar:
+                    id: current
+                    value: 0
+                    min: 0
+                    max: 1
+                    size_hint_x: None
+                    width: 600
+                    pos_hint: {"x": 0.5}
+
+            BoxLayout:
+
+<StatsView>
+    name: "stats"
+    currtime: current
+    name1: name1
+    pl1: pl1
+    pl2: pl2
+    pl3: pl3
+    pl4: pl4
+    pl5: pl5
+    pl6: pl6
+    pl7: pl7
+    pl8: pl8
+    pl9: pl9
+    pl10: pl10
+    pl11: pl11
+    pl12: pl12
+    datef: datef
+    datei: datei
+    datef2: datef2
+    datei2: datei2
+    datef3: datef3
+    datei3: datei3
+    nart: nart
+    titl: titl
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: 300
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'home'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Search"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'search'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Playlists"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'playlists'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'log'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+                size_hint_y: None
+                height: 300
+
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        id: titl
+                        font_size: 20
+                        text: "Statistics Report"
+
+                ScrollView:
+                    size_hint_y: None
+                    height: 300
+                    size_hint_x: None
+                    width: 900
+                    bar_width: 30
+                    bar_color: 5, 10, 15, .8
+                    bar_inactive_color: 5, 20, 10, .5
+                    scroll_type: ['bars']
+
+                    GridLayout:
+
+                        cols: 3
+                        size_hint_y: None
+                        height: 3400
+                        size_hint_x: None
+                        width: 800
+
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo1
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with most albums"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 300
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            AnchorLayout:
+
+                                anchor_x: "right"
+                                anchor_y: "top"
+
+                                Label:
+                                    size_hint_y: None
+                                    height: 100
+                                    size_hint_x: None
+                                    width: 200
+
+
+                                    id: pl1
+                                    text: root.p1
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(1)
+
+
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+                            size_hint_x: None
+                            width: 250
+
+                            Label:
+                                id: repo2
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Most songs by genre"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 300
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl2
+                                text: root.p2
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(2)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo3
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Playlist length"
+                                font_size: 17
+
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+
+                                id: pl3
+                                text: root.p3
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(3)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo4
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Longest songs"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl4
+                                text: root.p4
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(4)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo5
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with the most songs"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl5
+                                text: root.p5
+
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(5)
+
+                        AnchorLayout:
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+
+                                id: repo6
+                                size_hint: (None, None)
+                                width: 100
+                                size: self.texture_size
+                                text: "     Average song length per genre"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+
+                                id: pl6
+                                text: root.p6
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(6)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo7
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists per playlist"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl7
+                                text: root.p7
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(7)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo8
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Most diverse artist per genre"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl8
+                                text: root.p8
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(8)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo9
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Sales by date"
+                                font_size: 17
+
+                            TextInput:
+                                id: datei
+                                multiline: False
+                                focus: True
+                                hint_text: "Initial date"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: datef
+                                multiline: False
+                                size_hint_y: None
+                                hint_text: "Final date"
+                                height: 33
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte9()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl9
+                                text: root.p9
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(9)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo10
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with most sales"
+                                font_size: 17
+
+                            TextInput:
+                                id: nart
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                hint_text: "# of artists"
+                                height: 33
+
+                            TextInput:
+                                id: datei2
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                hint_text: "Initial date"
+                                height: 33
+
+                            TextInput:
+                                id: datef2
+                                multiline: False
+                                size_hint_y: None
+                                hint_text: "Final date"
+                                height: 33
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte10()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl10
+                                text: root.p10
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(10)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo11
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Sales by genre"
+                                font_size: 17
+
+                            TextInput:
+                                id: datei3
+                                multiline: False
+                                focus: True
+                                hint_text: "Initial date"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: datef3
+                                multiline: False
+                                hint_text: "Final date"
+                                size_hint_y: None
+                                height: 33
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte11()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 500
+                                id: pl11
+                                text: root.p11
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(11)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo12
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with most sales"
+                                font_size: 17
+
+                            TextInput:
+                                id: arti3
+                                multiline: False
+                                focus: True
+                                hint_text: "Artist"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: ntrack3
+                                multiline: False
+                                hint_text: "No. of tracks"
+                                size_hint_y: None
+                                height: 33
+
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte12()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl12
+                                text: root.p12
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(12)
+
+        GridLayout:
+            cols: 1
+            Label:
+                id: name1
+                font_size: 20
+                text: ""
+
+
+            GridLayout:
+                cols: 9
+                size_hint_y: None
+                height: 30
+
+                Label:
+                    text: ""
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 65
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5, "y":0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+
+
+            GridLayout:
+                cols: 2
+                Label:
+                    text: ""
+                    size_hint_x: None
+                    width: 250
+                Label:
+                    id: current
+                    value: 0
+                    size_hint_x: None
+                    width: 600
+                    pos_hint: {"x": 0.5}
+                    text: "Proyecto 1 - Grupo 8"
+
+            BoxLayout:
+
+
+#///////////////////////////////////////////////////////////////////////////////
+
+<HomeAdmin>
+    name: "homeA"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'administrate'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        font_size: 20
+                        text: "     Welcome!"
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        text: "     Thank you for using the Spotify Chafita streaming service"
+                        font_size: 17
+
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        text: "     Click the 'Administrate' page to adjust the database"
+
+                AnchorLayout:
+
+                    anchor_x: "left"
+                    anchor_y: "top"
+
+                    Label:
+                        size_hint: (None, None)
+                        size: self.texture_size
+                        text: "     Click the 'Statistics' page to view a data report with interesting stats"
+
+
+        BoxLayout:
+
+<AdminConfig>
+    name: "administrate"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "img/Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:2
+
+                Button:
+                    text: "Add Artist"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'addArtist'
+
+                Button:
+                    text: "Add Song"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'addSong'
+
+                Button:
+                    text: "Add Album"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'addAlbum'
+
+                Button:
+                    text: "Eliminate"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'eliminate'
+
+
+
+        BoxLayout:
+
+
+<StatsAdmin>
+    name: "statsA"
+    name1: name1
+    pl1: pl1
+    pl2: pl2
+    pl3: pl3
+    pl4: pl4
+    pl5: pl5
+    pl6: pl6
+    pl7: pl7
+    pl8: pl8
+    pl9: pl9
+    pl10: pl10
+    pl11: pl11
+    pl12: pl12
+    datef: datef
+    datei: datei
+    datef2: datef2
+    datei2: datei2
+    datef3: datef3
+    datei3: datei3
+    nart: nart
+    titl: titl
+    arti3: arti3
+    ntrack3: ntrack3
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: 300
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'administrate'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+                size_hint_y: None
+                height: 300
+
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        id: titl
+                        font_size: 20
+                        text: "Statistics Report"
+
+                ScrollView:
+                    size_hint_y: None
+                    height: 300
+                    size_hint_x: None
+                    width: 900
+                    bar_width: 30
+                    bar_color: 5, 10, 15, .8
+                    bar_inactive_color: 5, 20, 10, .5
+                    scroll_type: ['bars']
+
+                    GridLayout:
+
+                        cols: 3
+                        size_hint_y: None
+                        height: 2800
+                        size_hint_x: None
+                        width: 800
+
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo1
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with most albums"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 300
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            AnchorLayout:
+
+                                anchor_x: "right"
+                                anchor_y: "top"
+
+                                Label:
+                                    size_hint_y: None
+                                    height: 100
+                                    size_hint_x: None
+                                    width: 200
+
+
+                                    id: pl1
+                                    text: root.p1
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(1)
+
+
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+                            size_hint_x: None
+                            width: 250
+
+                            Label:
+                                id: repo2
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Most songs by genre"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 300
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl2
+                                text: root.p2
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(2)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo3
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Playlist length"
+                                font_size: 17
+
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+
+                                id: pl3
+                                text: root.p3
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(3)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo4
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Longest songs"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl4
+                                text: root.p4
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(4)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo5
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with the most songs"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl5
+                                text: root.p5
+
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(5)
+
+                        AnchorLayout:
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+
+                                id: repo6
+                                size_hint: (None, None)
+                                width: 100
+                                size: self.texture_size
+                                text: "     Average song length per genre"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+
+                                id: pl6
+                                text: root.p6
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(6)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo7
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists per playlist"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl7
+                                text: root.p7
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(7)
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                id: repo8
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Most diverse artist per genre"
+                                font_size: 17
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                id: pl8
+                                text: root.p8
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(8)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo9
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Sales by date"
+                                font_size: 17
+
+                            TextInput:
+                                id: datei
+                                multiline: False
+                                focus: True
+                                hint_text: "Initial date"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: datef
+                                multiline: False
+                                size_hint_y: None
+                                hint_text: "Final date"
+                                height: 33
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte9()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl9
+                                text: root.p9
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(9)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo10
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with most sales"
+                                font_size: 17
+
+                            TextInput:
+                                id: nart
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                hint_text: "# of artists"
+                                height: 33
+
+                            TextInput:
+                                id: datei2
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                hint_text: "Initial date"
+                                height: 33
+
+                            TextInput:
+                                id: datef2
+                                multiline: False
+                                size_hint_y: None
+                                hint_text: "Final date"
+                                height: 33
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte10()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl10
+                                text: root.p10
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(10)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo11
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Sales by genre"
+                                font_size: 17
+
+                            TextInput:
+                                id: datei3
+                                multiline: False
+                                focus: True
+                                hint_text: "Initial date"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: datef3
+                                multiline: False
+                                hint_text: "Final date"
+                                size_hint_y: None
+                                height: 33
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte11()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 500
+                                id: pl11
+                                text: root.p11
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(11)
+
+                        GridLayout:
+                            cols: 1
+                            size_hint_y: None
+                            height: 200
+
+
+                            Label:
+                                id: repo12
+                                size_hint: (None, None)
+                                size: self.texture_size
+                                text: "     Artists with most sales"
+                                font_size: 17
+
+                            TextInput:
+                                id: arti3
+                                multiline: False
+                                focus: True
+                                hint_text: "Artist"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: ntrack3
+                                multiline: False
+                                hint_text: "No. of tracks"
+                                size_hint_y: None
+                                height: 33
+
+
+                            Button:
+                                height: 40
+                                text: "Submit"
+                                on_press:
+                                    root.reporte12()
+
+                        ScrollView:
+                            size_hint_y: None
+                            height: 200
+                            size_hint_x: None
+                            width: 500
+                            bar_width: 30
+                            bar_color: 5, 10, 15, .8
+                            bar_inactive_color: 5, 20, 10, .5
+                            scroll_type: ['bars']
+
+                            Label:
+                                size_hint_y: None
+                                height: 300
+                                id: pl12
+                                text: root.p12
+
+                        Button:
+                            text: "Export to csv"
+                            size_hint_y: None
+                            height: 60
+                            size_hint_x: None
+                            width: 150
+                            background_normal: 'img/button1.jpg'
+                            background_down: 'img/button2.jpg'
+                            on_release:
+                                root.exportRep(12)
+
+        GridLayout:
+            cols: 1
+            Label:
+                id: name1
+                font_size: 20
+                text: ""
+
+
+            GridLayout:
+                cols: 9
+                size_hint_y: None
+                height: 30
+
+                Label:
+                    text: ""
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 65
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5, "y":0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+
+
+            GridLayout:
+                cols:4
+                size_hint_x: None
+                width: 660
+                size_hint_y: None
+                height: 60
+
+                Label:
+                    size_hint_x: None
+                    width: 200
+                    text: ""
+                Button:
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    size_hint_x: None
+                    width: 200
+
+                    text: "Bitacora"
+                    on_release:
+                        app.root.current = 'bitacora'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    size_hint_x: None
+                    width: 200
+
+                    text: "Suggestions"
+                    on_release:
+                        app.root.current = 'suggest'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    size_hint_x: None
+                    width: 200
+
+                    text: "Simulation"
+                    on_release:
+                        app.root.current = 'simulation'
+                        root.manager.transition.direction = "left"
+
+
+            BoxLayout:
+
+<AddSong>
+    name: "addSong"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+
+                cols:2
+
+                GridLayout:
+
+                    cols: 1
+                    size_hint_y: None
+                    height: 280
+
+
+                    Label:
+
+                        font_size: 20
+                        text: "Add Song"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: 250
+                        size_hint_x: None
+                        width: 900
+                        bar_width: 30
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+                        GridLayout:
+                            cols: 3
+                            size_hint_x: None
+                            width: 670
+                            size_hint_y: None
+                            height: 400
+
+                            Label:
+                                size_hint_x: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+                                text: "Song"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: songi
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+                            Label:
+
+                                text: "Album"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: albumi
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+                                text: "Mediatype"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: media
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+
+                                text: "Genre"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: genre
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+
+                                text: "Artist"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: artisti
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+
+                                text: "Duration (ms)"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: duration
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+
+                                text: "Size (bytes)"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: sizei
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+
+                                text: "Price ($)"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: price
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Submit"
+                on_release:
+                    root.addSong()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+
+<AddArtist>
+    name: "addArtist"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+
+                cols:2
+
+                GridLayout:
+
+                    cols: 1
+                    size_hint_y: None
+                    height: 280
+
+
+                    Label:
+
+                        font_size: 20
+                        text: "Add Artist"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: 250
+                        size_hint_x: None
+                        width: 900
+                        bar_width: 30
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+                        GridLayout:
+                            cols: 3
+                            size_hint_x: None
+                            width: 670
+                            size_hint_y: None
+                            height: 400
+
+                            Label:
+                                size_hint_x: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+                                text: "Full Name"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: fname
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                height: 33
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Submit"
+                on_release:
+                    root.addArt()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+
+<AddAlbum>
+    name: "addAlbum"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+
+                cols:2
+
+                GridLayout:
+
+                    cols: 1
+                    size_hint_y: None
+                    height: 280
+
+
+                    Label:
+
+                        font_size: 20
+                        text: "Add Album"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: 250
+                        size_hint_x: None
+                        width: 900
+                        bar_width: 30
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+                        GridLayout:
+                            cols: 3
+                            size_hint_x: None
+                            width: 670
+                            size_hint_y: None
+                            height: 400
+
+                            Label:
+                                size_hint_x: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+                                text: "Album"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: albumi
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                height: 33
+
+                            Label:
+                                size_hint_y: None
+                                size_hint_y: None
+                                height: 40
+                            Label:
+
+                                text: "Artist"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: artisti
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Submit"
+                on_release:
+                    root.addAlbum()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+
+<EliSong>
+    name: "eliminate"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+
+                cols:2
+
+                GridLayout:
+
+                    cols: 1
+                    size_hint_y: None
+                    height: 280
+
+
+                    Label:
+
+                        font_size: 20
+                        text: "Eliminate"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: 250
+                        size_hint_x: None
+                        width: 900
+                        bar_width: 30
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+                        GridLayout:
+                            cols: 3
+                            size_hint_x: None
+                            width: 670
+                            size_hint_y: None
+                            height: 400
+
+                            Label:
+                                text: "Song"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: songI
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                height: 33
+
+                            Button:
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                size_hint_x: None
+                                width: 150
+                                size_hint_y: None
+                                height: 45
+
+                                text: "Submit"
+                                on_release:
+                                    root.elimi(1)
+
+                            Label:
+
+                                text: "Album"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: albumI
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Button:
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                size_hint_x: None
+                                width: 150
+                                size_hint_y: None
+                                height: 45
+
+                                text: "Submit"
+                                on_release:
+                                    root.elimi(2)
+
+                            Label:
+                                text: "Artist"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: artistI
+                                multiline: False
+                                size_hint_y: None
+                                height: 33
+
+                            Button:
+                                background_normal: 'img/button1.jpg'
+                                background_down: 'img/button2.jpg'
+                                size_hint_x: None
+                                width: 150
+                                size_hint_y: None
+                                height: 45
+
+                                text: "Submit"
+                                on_release:
+                                    root.elimi(3)
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Submit"
+
+
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+
+<CreatePlay>
+    name: "createPlaylist"
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'home'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Search"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'search'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Playlists"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'playlists'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'log'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+
+                cols:2
+
+                GridLayout:
+
+                    cols: 1
+                    size_hint_y: None
+                    height: 280
+
+
+                    Label:
+
+                        font_size: 20
+                        text: "Create Playlist"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: 250
+                        size_hint_x: None
+                        width: 900
+                        bar_width: 30
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+                        GridLayout:
+                            cols: 3
+                            size_hint_x: None
+                            width: 670
+                            size_hint_y: None
+                            height: 400
+
+                            Label:
+                                size_hint_x: None
+                                size_hint_y: None
+                                height: 40
+
+                            Label:
+                                text: "Playlist Name"
+                                size_hint_y: None
+                                height: 33
+
+                            TextInput:
+                                id: pname
+                                multiline: False
+                                focus: True
+                                size_hint_y: None
+                                height: 33
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Submit"
+                on_release:
+                    root.addPl()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+
+<Bitacora>
+    name: "bitacora"
+    name1: name1
+    pl1: pl1
+    pl2: pl2
+    pl3: pl3
+    titl: titl
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: 300
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'administrate'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+                size_hint_y: None
+                height: 300
+
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        id: titl
+                        font_size: 20
+                        text: "Bitacora"
+
+                ScrollView:
+                    size_hint_y: None
+                    height: 300
+                    size_hint_x: None
+                    width: 900
+                    bar_width: 30
+                    bar_color: 5, 10, 15, .8
+                    bar_inactive_color: 5, 20, 10, .5
+                    scroll_type: ['bars']
+
+                    GridLayout:
+
+                        cols: 3
+                        size_hint_y: None
+                        height: 1500
+                        size_hint_x: None
+                        width: 800
+
+
+                        AnchorLayout:
+
+                            anchor_x: "right"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 200
+                                size_hint_x: None
+                                width: 200
+
+                                text: "Date"
+
+                        AnchorLayout:
+
+                            anchor_x: "right"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 200
+                                size_hint_x: None
+                                width: 200
+                                text: "Time"
+
+                        AnchorLayout:
+
+                            anchor_x: "right"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 200
+                                size_hint_x: None
+                                width: 200
+                                text: "User"
+
+                        AnchorLayout:
+
+                            anchor_x: "right"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 200
+                                size_hint_x: None
+                                width: 200
+                                id: pl1
+                                text: root.p1
+
+                        AnchorLayout:
+
+                            anchor_x: "right"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 200
+                                size_hint_x: None
+                                width: 200
+                                id: pl2
+                                text: root.p2
+
+                        AnchorLayout:
+
+                            anchor_x: "right"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 200
+                                size_hint_x: None
+                                width: 200
+                                id: pl3
+                                text: root.p3
+
+        GridLayout:
+            cols: 1
+            Label:
+                id: name1
+                font_size: 20
+                text: ""
+
+
+            GridLayout:
+                cols: 9
+                size_hint_y: None
+                height: 30
+
+                Label:
+                    text: ""
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 65
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5, "y":0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+
+
+            GridLayout:
+                cols:2
+                size_hint_x: None
+                width: 660
+                size_hint_y: None
+                height: 100
+
+                Label:
+
+                    text: ""
+                Button:
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    size_hint_x: None
+                    width: 200
+
+                    text: "MongoDB"
+                    on_release:
+                        app.root.current = 'mongodb'
+                        root.manager.transition.direction = "left"
+
+                Label:
+
+                    text: ""
+                Button:
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    size_hint_x: None
+                    width: 200
+
+                    text: "Refresh"
+                    on_release:
+                        root.resBit()
+
+
+            BoxLayout:
+
+<MongoConexion>
+    name: "mongodb"
+    year: year
+    month: month
+    day: day
+    year2: year2
+    month2: month2
+    day2: day2
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+
+                cols:2
+
+                GridLayout:
+
+                    cols: 1
+                    size_hint_y: None
+                    height: 280
+
+
+                    Label:
+
+                        font_size: 20
+                        text: "Mongo DB"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: 250
+                        size_hint_x: None
+                        width: 900
+                        bar_width: 30
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+
+                        GridLayout:
+
+                            cols: 1
+                            size_hint_y: None
+                            height: 700
+                            Label:
+
+                                text: "From"
+                                size_hint_y: None
+                                height: 33
+
+                            GridLayout:
+                                cols: 3
+                                size_hint_x: None
+                                width: 670
+                                size_hint_y: None
+                                height: 400
+
+                                Label:
+                                    size_hint_x: None
+                                    size_hint_y: None
+                                    height: 40
+
+                                Label:
+                                    text: "Year"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: year
+                                    multiline: False
+                                    focus: True
+                                    size_hint_y: None
+                                    height: 33
+
+                                Label:
+                                    size_hint_y: None
+                                    size_hint_y: None
+                                    height: 40
+                                Label:
+
+                                    text: "Month"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: month
+                                    multiline: False
+                                    size_hint_y: None
+                                    height: 33
+
+                                Label:
+                                    size_hint_y: None
+                                    size_hint_y: None
+                                    height: 40
+
+                                Label:
+
+                                    text: "Day"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: day
+                                    multiline: False
+                                    size_hint_y: None
+                                    height: 33
+
+                            Label:
+
+                                text: "To"
+                                size_hint_y: None
+                                height: 33
+
+                            GridLayout:
+                                cols: 3
+                                size_hint_x: None
+                                width: 670
+                                size_hint_y: None
+                                height: 400
+
+                                Label:
+                                    size_hint_x: None
+                                    size_hint_y: None
+                                    height: 40
+
+                                Label:
+                                    text: "Year"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: year2
+                                    multiline: False
+                                    focus: True
+                                    size_hint_y: None
+                                    height: 33
+
+                                Label:
+                                    size_hint_y: None
+                                    size_hint_y: None
+                                    height: 40
+                                Label:
+
+                                    text: "Month"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: month2
+                                    multiline: False
+                                    size_hint_y: None
+                                    height: 33
+
+                                Label:
+                                    size_hint_y: None
+                                    size_hint_y: None
+                                    height: 40
+
+                                Label:
+
+                                    text: "Day"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: day2
+                                    multiline: False
+                                    size_hint_y: None
+                                    height: 33
+
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Submit"
+                on_release:
+                    root.insertMongo()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
+
+<Sugerencias>
+    name: "suggest"
+    name1: name1
+    pl1: pl1
+    pl2: pl2
+    titl: titl
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+                pos_hint: {"x": 0.5}
+
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: 300
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'administrate'
+                        root.manager.transition.direction = "left"
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+                cols:1
+                size_hint_y: None
+                height: 300
+
+                GridLayout:
+                    cols: 1
+                    size_hint_y: None
+                    height: 40
+
+                    Label:
+                        id: titl
+                        font_size: 20
+                        text: "Suggestions"
+
+                ScrollView:
+                    size_hint_y: None
+                    height: 300
+                    size_hint_x: None
+                    width: 900
+                    bar_width: 30
+                    bar_color: 5, 10, 15, .8
+                    bar_inactive_color: 5, 20, 10, .5
+                    scroll_type: ['bars']
+
+                    GridLayout:
+
+                        cols: 2
+                        size_hint_y: None
+                        height: 200
+                        size_hint_x: None
+                        width: 800
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 60
+                                size_hint_x: None
+                                width: 200
+                                text: "User"
+
+                        AnchorLayout:
+
+                            anchor_x: "right"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 20
+                                size_hint_x: None
+                                width: 300
+
+                                text: "Songs"
+
+                        AnchorLayout:
+
+                            anchor_x: "left"
+                            anchor_y: "top"
+
+                            Label:
+                                size_hint_y: None
+                                height: 100
+                                size_hint_x: None
+                                width: 200
+                                id: pl1
+                                text: root.p1
+
+                        AnchorLayout:
+
+
+
+                            ScrollView:
+                                size_hint_y: None
+                                height: 200
+                                size_hint_x: None
+                                width: 575
+                                bar_width: 30
+                                bar_color: 5, 10, 15, .8
+                                bar_inactive_color: 5, 20, 10, .5
+                                scroll_type: ['bars']
+
+
+                                Label:
+                                    size_hint_y: None
+                                    height: 200
+                                    size_hint_x: None
+                                    width: 3530
+                                    id: pl2
+                                    text: root.p2
+
+
+        GridLayout:
+            cols: 1
+            Label:
+                id: name1
+                font_size: 20
+                text: ""
+
+
+            GridLayout:
+                cols: 9
+                size_hint_y: None
+                height: 30
+
+                Label:
+                    text: ""
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 65
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5, "y":0.5}
+
+                Label:
+                    size_hint_x: None
+                    width: 60
+                    size_hint_y: None
+                    height: 63
+
+                    pos_hint: {"x": 0.5}
+
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+                Label:
+                    text: ""
+
+
+
+            GridLayout:
+                cols:2
+                size_hint_x: None
+                width: 660
+                size_hint_y: None
+                height: 60
+
+                Label:
+
+                    text: ""
+                Button:
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    size_hint_x: None
+                    width: 200
+
+                    text: "MongoDB"
+                    on_release:
+                        app.root.current = 'mongodb'
+                        root.manager.transition.direction = "left"
+
+
+
+            BoxLayout:
+
+<Simulacion>
+    name: "simulation"
+    date: date
+    ntracks: ntracks
+    resu: resu
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+
+        row_default_height: 10
+
+        GridLayout:
+            cols: 1
+            BoxLayout:
+
+                Label:
+                    font_size: 33
+                    text: "Spotify Chafita"
+
+
+            Image:
+                source: 'img/icon.png'
+
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: 10
+
+
+
+        GridLayout:
+            cols: 2
+
+
+            GridLayout:
+                cols: 1
+                size_hint_x: None
+                width: 200
+
+                Button:
+                    text: "Home"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'homeA'
+                        root.manager.transition.direction = "right"
+                Button:
+                    text: "Administrate"
+                    background_normal: 'img/button2.jpg'
+                    background_down: 'img/button1.jpg'
+
+                Button:
+                    text: "Statistics"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'statsA'
+                        root.manager.transition.direction = "left"
+                Button:
+                    text: "Log Out"
+                    background_normal: 'img/button1.jpg'
+                    background_down: 'img/button2.jpg'
+                    on_release:
+                        app.root.current = 'admin'
+                        root.manager.transition.direction = "right"
+
+            GridLayout:
+
+                cols:2
+
+                GridLayout:
+
+                    cols: 1
+                    size_hint_y: None
+                    height: 280
+
+
+                    Label:
+
+                        font_size: 20
+                        text: "Simulation"
+
+                    ScrollView:
+                        size_hint_y: None
+                        height: 250
+                        size_hint_x: None
+                        width: 900
+                        bar_width: 30
+                        bar_color: 5, 10, 15, .8
+                        bar_inactive_color: 5, 20, 10, .5
+                        scroll_type: ['bars']
+
+
+                        GridLayout:
+
+                            cols: 1
+                            size_hint_y: None
+                            height: 700
+
+
+                            GridLayout:
+                                cols: 3
+                                size_hint_x: None
+                                width: 670
+                                size_hint_y: None
+                                height: 400
+
+                                Label:
+                                    size_hint_x: None
+                                    size_hint_y: None
+                                    height: 40
+
+                                Label:
+                                    text: "Date"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: date
+                                    multiline: False
+                                    focus: True
+                                    size_hint_y: None
+                                    height: 33
+
+                                Label:
+                                    size_hint_y: None
+                                    size_hint_y: None
+                                    height: 40
+                                Label:
+
+                                    text: "No. of tracks"
+                                    size_hint_y: None
+                                    height: 33
+
+                                TextInput:
+                                    id: ntracks
+                                    multiline: False
+                                    size_hint_y: None
+                                    height: 33
+
+                                Label:
+                                    size_hint_y: None
+                                    size_hint_y: None
+                                    height: 40
+
+                                Label:
+                                    id: resu
+                                    size_hint_y: None
+                                    size_hint_y: None
+                                    height: 40
+                                    text: ""
+
+        GridLayout:
+            cols:2
+            size_hint_x: None
+            width: 660
+            size_hint_y: None
+            height: 60
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'img/button1.jpg'
+                background_down: 'img/button2.jpg'
+                size_hint_x: None
+                width: 200
+
+                text: "Simulate"
+                on_release:
+                    root.simulate()
+
+        BoxLayout:
+            size_hint_y: None
+            height: 60
