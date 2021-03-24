@@ -2025,11 +2025,8 @@ class AddSong(Screen):
         artist = self.ids.artisti.text
         album = self.ids.albumi.text
         song = self.ids.songi.text
-        duration = self.ids.duration.text
-        size = self.ids.sizei.text
         genre = self.ids.genre.text
-        media = self.ids.media.text
-        price = self.ids.price.text
+        
 
         cur.execute("SELECT MAX(trackid) FROM track ")
         opcion1 = cur.fetchall()
@@ -2043,11 +2040,7 @@ class AddSong(Screen):
         for r in opcion1:
             albumid = r[0]
 
-        cur.execute("SELECT mediatype.mediatypeid FROM mediatype WHERE mediatype.name = %s ", (media,))
-        opcion1 = cur.fetchall()
-        mediatypeid = 0
-        for r in opcion1:
-            mediatypeid = r[0]
+        
 
         cur.execute("SELECT genre.genreid FROM genre WHERE genre.name = %s ", (genre,))
         opcion1 = cur.fetchall()
@@ -2055,10 +2048,15 @@ class AddSong(Screen):
         for r in opcion1:
             genreid = r[0]
 
+        cur.execute("SELECT MAX(artistid) FROM track ")
+        opcion1 = cur.fetchall()
+        artistid = 0
+        for r in opcion1:
+            artistid = r[0] + 1
         if song != '':
             cur.execute(
-                "INSERT INTO track(trackid, name, albumid, mediatypeid, genreid, composer, milliseconds, bytes, unitprice, modify) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s, %s)",
-                (trackid, song, albumid, mediatypeid, genreid, artist, duration, size, price, self.userActual))
+                "INSERT INTO track(trackid, name, albumid, genreid, composer, artistid) VALUES (%s,%s,%s,%s, %s, %s)",
+                (trackid, song, albumid, genre, artist, artistid ))
             con.commit()
 
 
@@ -2101,7 +2099,7 @@ class AddAlbum(Screen):
             artistid = r[0]
 
         if album != '':
-            cur.execute("INSERT INTO album(albumid, title, artistid, modify) VALUES (%s, %s, %s, %s)", (albumid, album, artistid, self.userActual))
+            cur.execute("INSERT INTO album(albumid, title, artistid) VALUES (%s, %s, %s)", (albumid, album, artistid))
             con.commit()
 
 
@@ -2138,13 +2136,9 @@ class EliSong(Screen):
 
         for r in sonNames:
             trackid = int(r)
-            cur.execute("DELETE FROM invoiceline WHERE trackid= %s", (trackid,))
-            con.commit()
             cur.execute("DELETE FROM playlisttrack WHERE trackid = %s", (trackid,))
             con.commit()
             cur.execute("DELETE FROM track WHERE trackid = %s", (trackid,))
-            con.commit()
-            cur.execute("INSERT INTO bitacora VALUES(%s, %s, %s) ", (d1, d2, self.userActual,))
             con.commit()
             print("Se ha eliminado la cancion de la base de datos")
 
@@ -2179,8 +2173,6 @@ class EliSong(Screen):
             self.elimTrack(songName)
         cur.execute("DELETE FROM album WHERE title= %s", (name, ))
         con.commit()
-        cur.execute("INSERT INTO bitacora VALUES(%s, %s, %s) ", (d1, d2, self.userActual,))
-        con.commit()
         print("Se ha eliminado la album de la base de datos")
 
     def elimArt(self, name):
@@ -2213,8 +2205,6 @@ class EliSong(Screen):
         d1 = today.strftime("%Y-%m-%d")
         d2 = today.strftime("%H:%M:%S")
         cur.execute("DELETE FROM artist WHERE name= %s", (name,))
-        con.commit()
-        cur.execute("INSERT INTO bitacora VALUES(%s, %s, %s) ", (d1, d2, self.userActual,))
         con.commit()
         print("Se ha eliminado la artista de la base de datos")
 
