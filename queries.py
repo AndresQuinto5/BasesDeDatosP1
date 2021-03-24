@@ -74,9 +74,38 @@ rep7 = "SELECT d.name, COUNT(d.name) FROM (SELECT p.name AS Name, COUNT(t.albumi
 #Artistas con mas diversidad de generos musicales
 
 rep8 = "SELECT a.name, COUNT(a.name) FROM (SELECT Artist.artistid as artist,track.genreid as genre FROM ARTIST JOIN Album ON Album.ArtistId=Artist.ArtistId JOIN TRACK ON Track.AlbumId=Album.AlbumId GROUP BY(artist.artistID,track.genreid)) G JOIN Artist a ON G.artist=a.artistid JOIN Genre ON G.genre=Genre.genreid GROUP BY (a.name) ORDER BY COUNT(a.name) DESC LIMIT 5"
+
 #Albumes mas recientes de la ultima semana
+def albumesRecientes():
+    cur = con.cursor()
+    cur.execute('SELECT Album, fechaLanzamiento FROM Cancion c WHERE c.fechaLanzamiento BETWEEN %s and %s group by Album, fechaLanzamiento order by fechaLanzamiento desc', ['2021-03-24', '2021-03-31'])
+    row = cur.fetchall()
+    for r in row:
+        print(f"{r[0]}, Album {r[1]}, Lanzamiento {r[2]}")
+
 #Aritstas con popularidad creciente en los ultimos tres meses
+
 #Cantidad de nuevas suscripciones mensuales durante los ultimos seis meses
+        
 #artistas con mayor produccion musical
+def mostProd():
+    cur = con.cursor()
+    cur.execute('select Artista , count(Artista) from Cancion group by Artista order by count(Artista) desc limit 1')
+    row = cur.fetchall()
+    for r in row:
+        print(f"{r[0]}, Artista {r[1]}, Lanzamientos {r[2]}")
 #Generos mas populares
+def popularGen():
+    cur = con.cursor()
+    cur.execute('select Genero , count(Genero) from Cancion group by Genero order by count(Genero) desc limit 1')
+    row = cur.fetchall()
+    for r in row:
+        print(f"{r[0]}, Fenero {r[1]}, Canciones {r[2]}")
+        
 #Usuarios mas activos de la plataforma
+def mostActive():
+    cur = con.cursor()
+    cur.execute('select id_user, count(id_user) from Buscador group by id_user order by count(id_user) desc limit 5')
+    row = cur.fetchall()
+    for r in row:
+        print(f"{r[0]}, id_user {r[1]}, Busquedas {r[2]}")
