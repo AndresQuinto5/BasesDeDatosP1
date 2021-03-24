@@ -24,7 +24,7 @@ import csv
 #connect to de database
 con = psycopg2.connect(
     host = "localhost",
-    database = "proshecto",
+    database = "proyecf",
     user = "postgres",
     password = "admin")
 
@@ -116,7 +116,7 @@ class Signin(Screen):
         
         if usern != '' and passw != '':
             #Verificar que no exista usuario
-            cur.execute("SELECT COUNT(*) FROM secretarias WHERE username = '" + usern + "'")
+            cur.execute("SELECT COUNT(*) FROM users WHERE username = '" + usern + "'")
             opcion1 = cur.fetchall()
             s = str(opcion1)
             if s != '[(1,)]':
@@ -125,12 +125,13 @@ class Signin(Screen):
                     self.errM.text = 'Error al confirmar contrasena'
                 else:
                     cur.execute(
-                        "SELECT MAX(id) + 1 FROM secretarias")
+                        "SELECT MAX(userid) + 1 FROM users")
                     opcion3 = cur.fetchall()
                     secreid = int(opcion3[0][0])
+                    rolid = 1
 
-                    cur.execute("INSERT INTO secretarias VALUES(%s, %s, %s, %s)",
-                                (secreid, str(nombres), str(usern), str(passw)))
+                    cur.execute("INSERT INTO users VALUES(%s, %s, %s, %s, %s, %s)",
+                                (secreid, str(usern), str(passw), rolid, str(usern), secreid ))
                     con.commit()
 
                     self.manager.transition.direction = "right"
@@ -1561,7 +1562,7 @@ class StatsView(Screen):
     r = r.replace(",", '\n')
     p2 = r
 
-    cur.execute(rep3)
+    #cur.execute(rep3)
     opcion3 = cur.fetchall()
     report3 = []
     for r in opcion3:
@@ -1574,7 +1575,7 @@ class StatsView(Screen):
     r = r.replace(",", '\n')
     p3 = r
 
-    cur.execute(rep4)
+    #cur.execute(rep4)
     opcion4 = cur.fetchall()
     report4 = []
     for r in opcion4:
@@ -1600,7 +1601,7 @@ class StatsView(Screen):
     r = r.replace(",", '\n')
     p5 = r
 
-    cur.execute(rep6)
+    #cur.execute(rep6)
     opcion6 = cur.fetchall()
     report6 = []
     for r in opcion6:
@@ -1931,7 +1932,7 @@ class StatsAdmin(Screen):
     r = r.replace(",", '\n')
     p2 = r
 
-    cur.execute(rep3)
+    #cur.execute(rep3)
     opcion3 = cur.fetchall()
     report3 = []
     for r in opcion3:
@@ -1944,7 +1945,7 @@ class StatsAdmin(Screen):
     r = r.replace(",", '\n')
     p3 = r
 
-    cur.execute(rep4)
+    #cur.execute(rep4)
     opcion4 = cur.fetchall()
     report4 = []
     for r in opcion4:
@@ -1970,7 +1971,7 @@ class StatsAdmin(Screen):
     r = r.replace(",", '\n')
     p5 = r
 
-    cur.execute(rep6)
+    #cur.execute(rep6)
     opcion6 = cur.fetchall()
     report6 = []
     for r in opcion6:

@@ -52,7 +52,7 @@ rep2 = "SELECT genre.name AS Genero, COUNT (genre.name) FROM Track INNER JOIN Ge
 
 #Reporte 3
 #Duracion de cada playlist
-rep3 = "SELECT p.name AS Playlist, SUM(t.milliseconds) AS Duration FROM PlaylistTrack pt INNER JOIN Playlist p ON pt.playlistid = p.playlistid INNER JOIN Track t ON pt.trackid = t.trackid GROUP BY p.name"
+#rep3 = "SELECT p.name AS Playlist, SUM(t.milliseconds) AS Duration FROM PlaylistTrack pt INNER JOIN Playlist p ON pt.playlistid = p.playlistid INNER JOIN Track t ON pt.trackid = t.trackid GROUP BY p.name"
 
 #Reporte 4
 #Canciones de mayor duracion con la informacion de sus artistas
