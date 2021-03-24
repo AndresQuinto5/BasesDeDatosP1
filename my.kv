@@ -131,6 +131,7 @@ WindowManager:
                 width: 350
             Label:
                 size_hint_x: None
+                size_hint_y: 25
                 width: 170
                 text: "To log in as administrator"
 
@@ -142,6 +143,26 @@ WindowManager:
                 background_down: 'images/boton2.jpg'
                 text: "Click here"
                 size_hint_x: None
+                size_hint_y: 120
+                width: 185
+                on_release:
+                    app.root.current = 'admin'
+                    root.manager.transition.direction = "left"
+        Label:
+            size_hint_y: None
+            height: 2
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                size_hint_x: None
+                width: 470
+            Button:
+                background_color: 0, 0, 0, 0
+                text: "No esta registrado? Crea un nuevo usuario"
+                size_hint_x: None
+                size_hint_y: 1
                 width: 170
                 on_release:
                     app.root.current = 'create'
@@ -704,7 +725,7 @@ WindowManager:
 
                         GridLayout:
 
-                            cols: 3
+                            cols: 2
                             size_hint_y: None
                             height: 420
                             size_hint_x: None
@@ -731,19 +752,7 @@ WindowManager:
                                     root.addPla(1)
                                     root.manager.transition.direction = "right"
 
-                            Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(1)
-
-
-
+                            
                             Button:
                                 id: pl2
                                 text: ""
@@ -765,16 +774,6 @@ WindowManager:
                                     root.addPla(2)
                                     root.manager.transition.direction = "right"
 
-                            Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(2)
 
                             Button:
                                 id: pl3
@@ -797,17 +796,7 @@ WindowManager:
                                     root.addPla(3)
                                     root.manager.transition.direction = "right"
 
-                            Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(3)
-
+                        
                             Button
                                 id: pl4
                                 text: ""
@@ -828,17 +817,6 @@ WindowManager:
                                 on_release:
                                     root.addPla(4)
                                     root.manager.transition.direction = "right"
-
-                            Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(4)
 
                             Button:
                                 id: pl5
@@ -862,17 +840,6 @@ WindowManager:
                                     root.manager.transition.direction = "right"
 
                             Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(5)
-
-                            Button:
                                 id: pl6
                                 text: ""
                                 on_press: root.selected(6)
@@ -893,17 +860,7 @@ WindowManager:
                                     root.addPla(6)
                                     root.manager.transition.direction = "right"
 
-                            Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(6)
-
+                            
                             Button:
                                 id: pl7
                                 text: ""
@@ -924,17 +881,6 @@ WindowManager:
                                 on_release:
                                     root.addPla(7)
                                     root.manager.transition.direction = "right"
-
-                            Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(7)
 
                             Button
                                 id: pl8
@@ -958,17 +904,6 @@ WindowManager:
                                     root.manager.transition.direction = "right"
 
                             Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(8)
-
-                            Button:
                                 id: pl9
                                 text: ""
                                 on_press: root.selected(9)
@@ -990,17 +925,6 @@ WindowManager:
                                     root.manager.transition.direction = "right"
 
                             Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(9)
-
-                            Button:
                                 id: pl10
                                 text: ""
                                 on_press: root.selected(10)
@@ -1020,16 +944,6 @@ WindowManager:
                                 on_release:
                                     root.addPla(10)
 
-                            Button:
-                                text: "Buy"
-                                size_hint_x: None
-                                width: 60
-                                size_hint_y: None
-                                height: 42
-                                background_normal: 'images/boton1.jpg'
-                                background_down: 'images/boton2.jpg'
-                                on_release:
-                                    root.buy(10)
 
         GridLayout:
             cols: 1
