@@ -128,10 +128,11 @@ class Signin(Screen):
                         "SELECT MAX(userid) + 1 FROM users")
                     opcion3 = cur.fetchall()
                     secreid = int(opcion3[0][0])
-                    rolid = 1
+                    rolid = 3
+                    s = 'false'
 
-                    cur.execute("INSERT INTO users VALUES(%s, %s, %s, %s, %s, %s)",
-                                (secreid, str(usern), str(passw), rolid, str(usern), secreid ))
+                    cur.execute("INSERT INTO users VALUES(%s, %s, %s, %s, %s)",
+                                (secreid, str(usern), str(passw), s, rolid))
                     con.commit()
 
                     self.manager.transition.direction = "right"
