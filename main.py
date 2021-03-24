@@ -54,6 +54,7 @@ class Main(Screen):
         CreatePlay.userActual = usern
         EliSong.userActual = usern
         ComprarCancion.userActual = usern
+        
 
         if usern != '':
             cur.execute("SELECT COUNT(*) FROM users WHERE username = %s AND password = %s AND roleid = 3", (str(usern), str(passw)))
@@ -81,6 +82,7 @@ class AdminLog(Screen):
         EliSong.userActual = usern
         ComprarCancion.userActual = usern
         Simulacion.userActual = usern
+        
 
         if usern != '':
             cur.execute("SELECT COUNT(*) FROM users WHERE username = %s AND password = %s AND roleid = 1",
@@ -98,6 +100,46 @@ class AdminLog(Screen):
 
 class HomeUser(Screen):
     pass
+
+class Signin(Screen):
+    #Crear usuario
+    errM = ObjectProperty(None)
+
+    def userVer(self):
+        self.errM.text = ''
+        nombr = self.ids.nombre_field.text
+        apell = self.ids.apellido_field.text
+        usern = self.ids.user_field.text
+        passw = self.ids.pass_field.text
+        confp = self.ids.confirmp_field.text
+        nombres = str(nombr + ' '+ apell)
+        
+        if usern != '' and passw != '':
+            #Verificar que no exista usuario
+            cur.execute("SELECT COUNT(*) FROM secretarias WHERE username = '" + usern + "'")
+            opcion1 = cur.fetchall()
+            s = str(opcion1)
+            if s != '[(1,)]':
+
+                if passw != confp:
+                    self.errM.text = 'Error al confirmar contrasena'
+                else:
+                    cur.execute(
+                        "SELECT MAX(id) + 1 FROM secretarias")
+                    opcion3 = cur.fetchall()
+                    secreid = int(opcion3[0][0])
+
+                    cur.execute("INSERT INTO secretarias VALUES(%s, %s, %s, %s)",
+                                (secreid, str(nombres), str(usern), str(passw)))
+                    con.commit()
+
+                    self.manager.transition.direction = "right"
+                    self.manager.current = 'log'
+            else:
+                self.errM.text = 'Usuario ya existe'
+        else:
+            self.errM.text = 'Por favor llene todos los campos requeridos'
+
 
 class AddPlaylist(Screen):
     sinp = ObjectProperty(None)

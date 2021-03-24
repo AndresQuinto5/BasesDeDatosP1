@@ -20,6 +20,7 @@ WindowManager:
     Sugerencias:
     ComprarCancion:
     Simulacion:
+    Signin:
 
 <BoxLayout>
     canvas.before:
@@ -143,7 +144,7 @@ WindowManager:
                 size_hint_x: None
                 width: 170
                 on_release:
-                    app.root.current = 'admin'
+                    app.root.current = 'create'
                     root.manager.transition.direction = "left"
         Label:
             size_hint_y: None
@@ -2632,7 +2633,7 @@ WindowManager:
                     size_hint_x: None
                     width: 600
                     pos_hint: {"x": 0.5}
-                    text: "Proyecto 1 - Grupo 8"
+                    text: "Proyecto 1 - Grupo 3 :)"
 
             BoxLayout:
 
@@ -5487,3 +5488,221 @@ WindowManager:
             size_hint_y: None
             height: 60
 
+<Signin>:
+    name: "create"
+    errM: errM
+
+    GridLayout:
+        cols: 1
+
+        Label:
+            size_hint_y: None
+            height: 10
+
+        GridLayout:
+            cols: 2
+            size_hint_x: None
+            width: 670
+            size_hint_y: None
+            height: 210
+
+            Label:
+                size_hint_x: None
+                width: 430
+
+            Image:
+                size_hint_y: None
+                height: 200
+                size_hint_x: None
+                width: 250
+                source: "Images/icon.png"
+                allow_stretch: True
+
+            Label:
+                size_hint_y: None
+                height: 20
+
+        GridLayout:
+            cols: 3
+            size_hint_x: None
+            width: 670
+            size_hint_y: None
+            height: 350
+
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                
+                text: "NOMBRE"
+
+            TextInput:
+                id: nombre_field
+                background_color: 0,6, 0.6, 0.6, 1
+                multiline: False
+                focus: True
+                text: ""
+
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                
+                text: "APELLIDO"
+
+            TextInput:
+                id: apellido_field
+                background_color: 0,6, 0.6, 0.6, 1
+                multiline: False
+                focus: True
+                text: ""
+
+            
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                
+                text: "USUARIO"
+
+            TextInput:
+                id: user_field
+                background_color: 0,6, 0.6, 0.6, 1
+                multiline: False
+                focus: True
+                text: ""
+
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                
+                text: "CONTRASENA"
+
+            TextInput:
+                id: pass_field
+                background_color: 0,6, 0.6, 0.6, 1
+                multiline: False
+                text: ""
+
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                
+                text: "CONFIRMAR CONTRASENA"
+
+            TextInput:
+                id: confirmp_field
+                background_color: 0,6, 0.6, 0.6, 1
+                multiline: False
+                focus: True
+                text: ""
+
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+            Label:
+                size_hint_x: None
+                width: 10
+
+            Label:
+                size_hint_y: None
+                height: 5
+            Label:
+                text: ""
+
+            Label:
+                color: 1, 0, 0, 1
+                id: errM
+                text: ""
+
+            Label:
+                size_hint_y: None
+                height: 5
+
+
+        GridLayout:
+            cols:3
+            size_hint_x: None
+            width: 760
+            size_hint_y: None
+            height: 50
+
+            Label:
+
+                text: ""
+            Button:
+                background_normal: 'images/boton1.jpg'
+                background_down: 'images/boton2.jpg'
+                font_size: 18
+                size_hint_x: None
+                width: 200
+                text: "Regresar"
+                on_release:
+                    root.manager.transition.direction = "right"
+                    app.root.current = 'log'
+                    
+            Button:
+                background_normal: 'images/boton1.jpg'
+                background_down: 'images/boton2.jpg'
+                font_size: 18
+                size_hint_x: None
+                width: 200
+                text: "Crear Usuario"
+                on_release:
+                    root.userVer()
+
+        Label:
+            size_hint_y: None
+            height: 20
