@@ -40,20 +40,20 @@ db = cluster["proyectiFinal"]
 collection = db["compras"]
 
 
-class MainWindow(Screen):
+class Main(Screen):
     errM = ObjectProperty(None)
 
 
     def userVer(self):
         usern = self.ids.user_field.text
         passw = self.ids.pass_field.text
-        EleventhWindow.userActual = usern
-        TwelveWindow.userActual = usern
-        ThirteenWindow.userActual = usern
-        FourthWindow.userActual = usern
-        FifteenWindow.userActual = usern
-        FourteenWindow.userActual = usern
-        NineteenWindow.userActual = usern
+        AddSong.userActual = usern
+        AddArtist.userActual = usern
+        AddAlbum.userActual = usern
+        SearchSong.userActual = usern
+        CreatePlay.userActual = usern
+        EliSong.userActual = usern
+        ComprarCancion.userActual = usern
 
         if usern != '':
             cur.execute("SELECT COUNT(*) FROM users WHERE username = %s AND password = %s AND roleid = 3", (str(usern), str(passw)))
@@ -67,20 +67,20 @@ class MainWindow(Screen):
                 self.errM.text = 'Invalid username or password'
 
 
-class SecondWindow(Screen):
+class AdminLog(Screen):
     errM = ObjectProperty(None)
 
     def userVer(self):
         usern = self.ids.user_field.text
         passw = self.ids.pass_field.text
-        EleventhWindow.userActual = usern
-        TwelveWindow.userActual = usern
-        ThirteenWindow.userActual = usern
-        FourthWindow.userActual = usern
-        FifteenWindow.userActual = usern
-        FourteenWindow.userActual = usern
-        NineteenWindow.userActual = usern
-        TwentyWindow.userActual = usern
+        AddSong.userActual = usern
+        AddArtist.userActual = usern
+        AddAlbum.userActual = usern
+        SearchSong.userActual = usern
+        CreatePlay.userActual = usern
+        EliSong.userActual = usern
+        ComprarCancion.userActual = usern
+        Simulacion.userActual = usern
 
         if usern != '':
             cur.execute("SELECT COUNT(*) FROM users WHERE username = %s AND password = %s AND roleid = 1",
@@ -96,10 +96,10 @@ class SecondWindow(Screen):
                 self.errM.text = 'Invalid username or password'
 
 
-class ThirdWindow(Screen):
+class HomeUser(Screen):
     pass
 
-class AddPlWindow(Screen):
+class AddPlaylist(Screen):
     sinp = ObjectProperty(None)
     songsele = ""
     seco = ""
@@ -134,7 +134,7 @@ class AddPlWindow(Screen):
             cur.execute("INSERT INTO playlisttrack VALUES(%s, %s)", (playid, trackid))
             con.commit()
 
-class FourthWindow(Screen):
+class SearchSong(Screen):
     songe = ObjectProperty(None)
     name1 = ObjectProperty(None)
     resu = ObjectProperty(None)
@@ -310,12 +310,12 @@ class FourthWindow(Screen):
             print(titl)
             second = seco.split(" by", 1)
             print(seco)
-            AddPlWindow.songsele = titl[0]
-            AddPlWindow.seco = second[0]
+            AddPlaylist.songsele = titl[0]
+            AddPlaylist.seco = second[0]
             self.manager.current = 'addPlaylist'
     def selected(self, indexe):
         self.playbtn(indexe)
-    
+
     def playtime(self, interval):
         if self.songCur != self.songDur:
             self.songCur = self.songCur + 1
@@ -466,13 +466,13 @@ class FourthWindow(Screen):
             names = self.pl10.text
             seco = self.segund[9]
         if str(names) != "":
-            NineteenWindow.songsele = names
-            NineteenWindow.seco = seco
+            ComprarCancion.songsele = names
+            ComprarCancion.seco = seco
             self.manager.transition.direction = "left"
             self.manager.current = 'cart'
 
 
-class NineteenWindow(Screen):
+class ComprarCancion(Screen):
     songsele = ""
     seco = ""
     userActual = ""
@@ -724,7 +724,7 @@ class NineteenWindow(Screen):
         pdf.setFont('Helvetica', 36)
         pdf.drawCentredString(300, 750, "Empire Music")
         pdf.setFont('Helvetica', 25)
-        pdf.drawInlineImage("Images/emp.png", 100, 380)
+        pdf.drawInlineImage("Images/icon.png", 100, 380)
         pdf.drawCentredString(290, 240, "Purchase Receipt")
         pdf.line(30, 230, 550, 230)
         text = pdf.beginText(40, 180)
@@ -737,7 +737,7 @@ class NineteenWindow(Screen):
         pdf.drawCentredString(290, 100, "Thank you for using our service!")
         pdf.save()
 
-class TwentyWindow(Screen):
+class Simulacion(Screen):
     ntracks = ObjectProperty(None)
     date = ObjectProperty(None)
     resu = ObjectProperty(None)
@@ -936,7 +936,7 @@ class TwentyWindow(Screen):
 
 
 
-class FifthWindow(Screen):
+class PlaylistView(Screen):
     songDur = 0
     songCur = 0
 
@@ -1227,7 +1227,7 @@ class FifthWindow(Screen):
 
 
 
-class SixthWindow(Screen):
+class StatsView(Screen):
 
     currtime = ObjectProperty(None)
     name1 = ObjectProperty(None)
@@ -1600,13 +1600,13 @@ class SixthWindow(Screen):
 
 
 
-class EigthWindow(Screen):
+class HomeAdmin(Screen):
     pass
 
-class NinthWindow(Screen):
+class AdminConfig(Screen):
     pass
 
-class TenthWindow(Screen):
+class StatsAdmin(Screen):
     name1 = ObjectProperty(None)
     titl = ObjectProperty(None)
     pl1 = ObjectProperty(None)
@@ -1974,7 +1974,7 @@ class TenthWindow(Screen):
         report1.append(f"{r[0]} with {r[1]} ")
 
 
-class EleventhWindow(Screen):
+class AddSong(Screen):
     userActual = ""
 
     def addSong(self):
@@ -2019,7 +2019,7 @@ class EleventhWindow(Screen):
 
 
 
-class TwelveWindow(Screen):
+class AddArtist(Screen):
     userActual = ""
     def addArt(self):
         name = self.ids.fname.text
@@ -2037,7 +2037,7 @@ class TwelveWindow(Screen):
             con.commit()
 
 
-class ThirteenWindow(Screen):
+class AddAlbum(Screen):
     userActual = ""
 
     def addAlbum(self):
@@ -2062,7 +2062,7 @@ class ThirteenWindow(Screen):
 
 
 
-class FourteenWindow(Screen):
+class EliSong(Screen):
 
     userActual = ""
     def elimi(self, indexe):
@@ -2174,7 +2174,7 @@ class FourteenWindow(Screen):
         con.commit()
         print("Se ha eliminado la artista de la base de datos")
 
-class FifteenWindow(Screen):
+class CreatePlay(Screen):
     userActual = ""
     def addPl(self):
         name = self.ids.pname.text
@@ -2189,7 +2189,7 @@ class FifteenWindow(Screen):
             cur.execute("INSERT INTO playlist(playlistid, name, modify) VALUES (%s, %s, %s)", (plid, name, self.userActual))
             con.commit()
 
-class SixteenWindow(Screen):
+class Bitacora(Screen):
     pl1 = ObjectProperty(None)
     pl2 = ObjectProperty(None)
     pl3 = ObjectProperty(None)
@@ -2261,7 +2261,7 @@ class SixteenWindow(Screen):
         self.pl3.text = r
 
 
-class SeventeenWindow(Screen):
+class MongoConexion(Screen):
     def insertMongo(self):
         year = self.ids.year.text
         month = self.ids.month.text
@@ -2291,7 +2291,7 @@ class SeventeenWindow(Screen):
             collection.insert_many(mylist)
 
 #Recomendaciones a 10 clientes
-class EightteenWindow(Screen):
+class Sugerencias(Screen):
     pl1 = ObjectProperty(None)
     pl2 = ObjectProperty(None)
     p1 = ""
@@ -2398,5 +2398,4 @@ class MyApp(App):
 
 if __name__ == "__main__":
     MyApp().run()
-
 
