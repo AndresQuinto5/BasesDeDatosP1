@@ -31,15 +31,6 @@ con = psycopg2.connect(
 #create a cursor
 cur = con.cursor()
 
-#MongoDB
-import pymongo
-from pymongo import MongoClient
-
-cluster = MongoClient("mongodb+srv://JDiegoSolorzano:Diego199@cluster0-5fvcd.mongodb.net/proyectiFinal?retryWrites=true&w=majority")
-db = cluster["proyectiFinal"]
-collection = db["compras"]
-
-
 class Main(Screen):
     errM = ObjectProperty(None)
 
@@ -456,16 +447,12 @@ class SearchSong(Screen):
                 print("aho")
                 print(tid)
                 print(self.userActual)
-                cur.execute(
-                    "update track set views = views + 1 , modify = '" + str(self.userActual) + "' where trackid = " + str(tid) + "")
-                con.commit()
+                
             self.songCur = 0
-            cur.execute(
-                "SELECT milliseconds FROM track WHERE name = %s LIMIT 1", (str(names),))
+            
             opcion3 = cur.fetchall()
             if len(opcion3) == 0:
-                cur.execute(
-                "SELECT milliseconds FROM track WHERE name = '" + str(second[0]) + "' LIMIT 1")
+                
                 opcion3 = cur.fetchall()
                 if len(opcion3) == 0:
                     opcion3.append(300000)
@@ -1248,8 +1235,7 @@ class PlaylistView(Screen):
         if str(names) != "":
             Clock.unschedule(self.playtime)
             self.songCur = 0
-            cur.execute(
-                "SELECT milliseconds FROM track WHERE name = %s LIMIT 1", (str(names),))
+            
             opcion3 = cur.fetchall()
             s = str(opcion3[0])
             s = s.replace(',', '')
@@ -1533,6 +1519,14 @@ class StatsView(Screen):
                 writer.writerow(["Artist", "Song", "Reproducctions"])
                 for line in self.opcion12:
                     writer.writerow(line)
+            elif indexe == 13:
+                headin = str(self.ids.repo88.text)
+                print(headin)
+                writer.writerow([headin])
+                writer.writerow(["Artist", "Song", "Reproducctions"])
+                for line in self.opcion13:
+                    writer.writerow(line)
+            
     cur.execute(rep1)
     opcion1 = cur.fetchall()
     print(opcion1)
@@ -1549,6 +1543,23 @@ class StatsView(Screen):
     r = r.replace(",", '\n')
 
     p1 = r
+
+    cur.execute(rep88)
+    opcion88 = cur.fetchall()
+    print(opcion88)
+
+    report88 = []
+    for r in opcion88:
+        report88.append(f"{r[0]} with {r[1]} ")
+
+    r = str(report88)
+
+    r = r.replace('[', "")
+    r = r.replace(']', "")
+    r = r.replace("'", "")
+    r = r.replace(",", '\n')
+
+    p88 = r
 
     cur.execute(rep2)
     opcion2 = cur.fetchall()
@@ -1602,11 +1613,11 @@ class StatsView(Screen):
     r = r.replace(",", '\n')
     p5 = r
 
-    #cur.execute(rep6)
+    cur.execute(rep6)
     opcion6 = cur.fetchall()
     report6 = []
     for r in opcion6:
-        report6.append(f"{r[0]} with {r[1]} ms")
+        report6.append(f"{r[0]} with {r[1]}")
 
     r = str(report6)
     r = r.replace('[', "")
@@ -1632,7 +1643,7 @@ class StatsView(Screen):
     opcion8 = cur.fetchall()
     report8 = []
     for r in opcion8:
-        report8.append(f"{r[0]} with {r[1]} ")
+        report8.append(f"{r[0]} ")
 
     r = str(report8)
     r = r.replace('[', "")
@@ -1907,6 +1918,13 @@ class StatsAdmin(Screen):
                 writer.writerow(["Artist", "Song", "Reproducctions"])
                 for line in self.opcion12:
                     writer.writerow(line)
+            elif indexe == 13:
+                headin = str(self.ids.repo88.text)
+                print(headin)
+                writer.writerow([headin])
+                writer.writerow(["Artist", "Song", "Reproducctions"])
+                for line in self.opcion13:
+                    writer.writerow(line)
     cur.execute(rep1)
     opcion1 = cur.fetchall()
     report1 = []
@@ -1919,6 +1937,23 @@ class StatsAdmin(Screen):
     r = r.replace("'", "")
     r = r.replace(",", '\n')
     p1 = r
+
+    cur.execute(rep88)
+    opcion88 = cur.fetchall()
+    print(opcion88)
+
+    report88 = []
+    for r in opcion88:
+        report88.append(f"{r[0]} with {r[1]} ")
+
+    r = str(report88)
+
+    r = r.replace('[', "")
+    r = r.replace(']', "")
+    r = r.replace("'", "")
+    r = r.replace(",", '\n')
+
+    p88 = r
 
     cur.execute(rep2)
     opcion2 = cur.fetchall()
@@ -1972,11 +2007,11 @@ class StatsAdmin(Screen):
     r = r.replace(",", '\n')
     p5 = r
 
-    #cur.execute(rep6)
+    cur.execute(rep6)
     opcion6 = cur.fetchall()
     report6 = []
     for r in opcion6:
-        report6.append(f"{r[0]} with {r[1]} ms")
+        report6.append(f"{r[0]} with {r[1]}")
 
     r = str(report6)
     r = r.replace('[', "")
@@ -2002,7 +2037,7 @@ class StatsAdmin(Screen):
     opcion8 = cur.fetchall()
     report8 = []
     for r in opcion8:
-        report8.append(f"{r[0]} with {r[1]} ")
+        report8.append(f"{r[0]} ")
 
     r = str(report8)
     r = r.replace('[', "")

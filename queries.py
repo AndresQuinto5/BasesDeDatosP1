@@ -56,7 +56,7 @@ rep2 = "SELECT genre.name AS Genero, COUNT (genre.name) FROM Track INNER JOIN Ge
 
 #Reporte 4
 #Canciones de mayor duracion con la informacion de sus artistas
-rep4 = "SELECT t.name AS Cancion, t.milliseconds AS Duracion_en_milisegundos, a.artistid, a.name FROM track t INNER JOIN Artist a ON t.composer = a.name ORDER BY t.milliseconds DESC LIMIT 5"
+#rep4 = "SELECT t.name AS Cancion, t.milliseconds AS Duracion_en_milisegundos, a.artistid, a.name FROM track t INNER JOIN Artist a ON t.composer = a.name ORDER BY t.milliseconds DESC LIMIT 5"
 
 #Reporte 5
 #Artistas que han registrado mas canciones
@@ -64,7 +64,7 @@ rep5 = "SELECT a.name AS Artista, COUNT(t.trackid) AS Canciones FROM Artist a IN
 
 #Reporte 6
 #Promedio de duracion de canciones por genero
-rep6 = "SELECT g.name AS Genero, AVG(t.milliseconds) AS Promedio_duracion_en_milisegundos FROM Track t INNER JOIN Genre g ON t.genreid = g.genreid GROUP BY g.name ORDER BY AVG(t.milliseconds) DESC"
+#rep6 = "SELECT g.name AS Genero, AVG(t.milliseconds) AS Promedio_duracion_en_milisegundos FROM Track t INNER JOIN Genre g ON t.genreid = g.genreid GROUP BY g.name ORDER BY AVG(t.milliseconds) DESC"
 
 #Reporte 7
 #Cantidad de artistas diferentes por playlist
@@ -73,10 +73,15 @@ rep7 = "SELECT d.name, COUNT(d.name) FROM (SELECT p.name AS Name, COUNT(t.albumi
 #Reporte 8
 #Artistas con mas diversidad de generos musicales
 
-rep8 = "SELECT a.name, COUNT(a.name) FROM (SELECT Artist.artistid as artist,track.genreid as genre FROM ARTIST JOIN Album ON Album.ArtistId=Artist.ArtistId JOIN TRACK ON Track.AlbumId=Album.AlbumId GROUP BY(artist.artistID,track.genreid)) G JOIN Artist a ON G.artist=a.artistid JOIN Genre ON G.genre=Genre.genreid GROUP BY (a.name) ORDER BY COUNT(a.name) DESC LIMIT 5"
+#rep8 = "SELECT a.name, COUNT(a.name) FROM (SELECT Artist.artistid as artist,track.genreid as genre FROM ARTIST JOIN Album ON Album.ArtistId=Artist.ArtistId JOIN TRACK ON Track.AlbumId=Album.AlbumId GROUP BY(artist.artistID,track.genreid)) G JOIN Artist a ON G.artist=a.artistid JOIN Genre ON G.genre=Genre.genreid GROUP BY (a.name) ORDER BY COUNT(a.name) DESC LIMIT 5"
 #Albumes mas recientes de la ultima semana
 #Aritstas con popularidad creciente en los ultimos tres meses
 #Cantidad de nuevas suscripciones mensuales durante los ultimos seis meses
 #artistas con mayor produccion musical
 #Generos mas populares
 #Usuarios mas activos de la plataforma
+rep9 = "SELECT username FROM users LIMIT 3"
+
+rep88 = "select users.username, count(userid) from users group by userid order by count(userid) desc limit 5"
+rep8 = "select title from album order by albumid desc limit 5"
+rep6 = " select * from artist limit 7"

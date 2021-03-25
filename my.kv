@@ -1897,7 +1897,7 @@ WindowManager:
                                 id: repo1
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Artists with most albums"
+                                text: "     Artistas con mayor produccion de albums"
                                 font_size: 17
 
                         ScrollView:
@@ -1949,7 +1949,7 @@ WindowManager:
                                 id: repo2
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Most songs by genre"
+                                text: "     Generos mas populares"
                                 font_size: 17
 
                         ScrollView:
@@ -1988,7 +1988,7 @@ WindowManager:
                                 id: repo3
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Playlist length"
+                                text: "     Usuarios mas activos"
                                 font_size: 17
 
 
@@ -2007,7 +2007,7 @@ WindowManager:
                                 height: 300
 
                                 id: pl3
-                                text: root.p3
+                                text: root.p88
 
                         Button:
                             text: "Export to csv"
@@ -2029,7 +2029,7 @@ WindowManager:
                                 id: repo4
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Longest songs"
+                                text: "     Cantidad de nuevas suscripciones mensuales"
                                 font_size: 17
 
                         ScrollView:
@@ -2068,7 +2068,7 @@ WindowManager:
                                 id: repo5
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Artists with the most songs"
+                                text: "     Artistas con mayor produccion de canciones"
                                 font_size: 17
 
                         ScrollView:
@@ -2109,7 +2109,7 @@ WindowManager:
                                 size_hint: (None, None)
                                 width: 100
                                 size: self.texture_size
-                                text: "     Average song length per genre"
+                                text: "     Artistas con popularidad creciente en los ultimos tres meses"
                                 font_size: 17
 
                         ScrollView:
@@ -2146,7 +2146,7 @@ WindowManager:
                                 id: repo7
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Artists per playlist"
+                                text: "     Artistas por playlist"
                                 font_size: 17
 
                         ScrollView:
@@ -2185,7 +2185,7 @@ WindowManager:
                                 id: repo8
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Most diverse artist per genre"
+                                text: "     albumes mas recientes de la ultima semana"
                                 font_size: 17
 
                         ScrollView:
@@ -2626,7 +2626,7 @@ WindowManager:
                                 id: repo1
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Artists with most albums"
+                                text: "     Artistas con mayor produccion de albums"
                                 font_size: 17
 
                         ScrollView:
@@ -2678,7 +2678,7 @@ WindowManager:
                                 id: repo2
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Most songs by genre"
+                                text: "     Generos mas populares"
                                 font_size: 17
 
                         ScrollView:
@@ -2717,7 +2717,7 @@ WindowManager:
                                 id: repo3
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Playlist length"
+                                text: "     Usuarios mas activos"
                                 font_size: 17
 
 
@@ -2736,7 +2736,7 @@ WindowManager:
                                 height: 300
 
                                 id: pl3
-                                text: root.p3
+                                text: root.p88
 
                         Button:
                             text: "Export to csv"
@@ -2758,7 +2758,7 @@ WindowManager:
                                 id: repo4
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Longest songs"
+                                text: "     Cantidad de nuevas suscripciones mensuales"
                                 font_size: 17
 
                         ScrollView:
@@ -2797,7 +2797,7 @@ WindowManager:
                                 id: repo5
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Artists with the most songs"
+                                text: "     Artistas con mayor produccion de canciones"
                                 font_size: 17
 
                         ScrollView:
@@ -2838,7 +2838,7 @@ WindowManager:
                                 size_hint: (None, None)
                                 width: 100
                                 size: self.texture_size
-                                text: "     Average song length per genre"
+                                text: "     Artistas con popularidad creciente en los ultimos tres meses"
                                 font_size: 17
 
                         ScrollView:
@@ -2875,7 +2875,7 @@ WindowManager:
                                 id: repo7
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Artists per playlist"
+                                text: "     Artistas por playlist"
                                 font_size: 17
 
                         ScrollView:
@@ -2914,7 +2914,7 @@ WindowManager:
                                 id: repo8
                                 size_hint: (None, None)
                                 size: self.texture_size
-                                text: "     Most diverse artist per genre"
+                                text: "     albumes mas recientes de la ultima semana"
                                 font_size: 17
 
                         ScrollView:
@@ -3138,21 +3138,7 @@ WindowManager:
                                 size_hint_y: None
                                 height: 40
 
-                            Label:
-                                text: "Mediatype"
-                                size_hint_y: None
-                                height: 33
-
-                            TextInput:
-                                id: media
-                                multiline: False
-                                size_hint_y: None
-                                height: 33
-
-                            Label:
-                                size_hint_y: None
-                                size_hint_y: None
-                                height: 40
+                            
 
                             Label:
 
@@ -3183,56 +3169,13 @@ WindowManager:
                                 size_hint_y: None
                                 height: 33
 
+                            
                             Label:
                                 size_hint_y: None
                                 size_hint_y: None
                                 height: 40
 
-                            Label:
 
-                                text: "Duration (ms)"
-                                size_hint_y: None
-                                height: 33
-
-                            TextInput:
-                                id: duration
-                                multiline: False
-                                size_hint_y: None
-                                height: 33
-
-                            Label:
-                                size_hint_y: None
-                                size_hint_y: None
-                                height: 40
-
-                            Label:
-
-                                text: "Size (bytes)"
-                                size_hint_y: None
-                                height: 33
-
-                            TextInput:
-                                id: sizei
-                                multiline: False
-                                size_hint_y: None
-                                height: 33
-
-                            Label:
-                                size_hint_y: None
-                                size_hint_y: None
-                                height: 40
-
-                            Label:
-
-                                text: "Price ($)"
-                                size_hint_y: None
-                                height: 33
-
-                            TextInput:
-                                id: price
-                                multiline: False
-                                size_hint_y: None
-                                height: 33
 
         GridLayout:
             cols:2
